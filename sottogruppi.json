@@ -26,18 +26,58 @@
           "type": "magistrate"
         }
       ]
+    },
+    {
+      "id": "subgroup_1751360333883",
+      "name": "Miglioramento applicativi esistenti",
+      "members": [
+        {
+          "id": "ciocca",
+          "name": "Enrica Ciocca",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "enrica.ciocca@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "cassia",
+          "name": "Maria Grazia Cassia",
+          "role": "Consigliere, Corte d'appello di Genova",
+          "email": "mariagrazia.cassia@giustizia.it",
+          "type": "magistrate"
+        }
+      ]
+    },
+    {
+      "id": "subgroup_1751360372386",
+      "name": "Minorenni e famiglia",
+      "members": [
+        {
+          "id": "digiulio",
+          "name": "Anna Maria Di Giulio",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "annamaria.digiulio@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "muscio",
+          "name": "Rosa Muscio",
+          "role": "Componente aggiuntivo",
+          "email": "rosa.muscio@giustizia.it",
+          "type": "other"
+        }
+      ]
     }
   ],
-  "timestamp": "2025-07-01T08:58:45.983Z",
+  "timestamp": "2025-07-01T09:00:39.977Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 38,
-    "totalSubgroups": 1,
-    "lastUpdate": "01/07/2025, 10:58:45",
-    "updatedBy": "User-kecs95u47"
+    "totalSubgroups": 3,
+    "lastUpdate": "01/07/2025, 11:00:39",
+    "updatedBy": "User-wpixuxvyz"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 08:58:46",
-    "timestamp": "2025-07-01T08:58:46.385Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 09:00:40",
+    "timestamp": "2025-07-01T09:00:40.387Z"
   }
 }
