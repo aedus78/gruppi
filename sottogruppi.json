@@ -66,6 +66,27 @@
           "role": "Dirigente Ufficio I Giurisdizione digitale civile DGSAP",
           "email": "alessandro.prosperini@giustizia.it",
           "type": "director"
+        },
+        {
+          "id": "capo_ciriello",
+          "name": "Antonella Ciriello",
+          "role": "Capo DIT",
+          "email": "antonella.ciriello@giustizia.it",
+          "type": "Head of Department"
+        },
+        {
+          "id": "coord_abbritti",
+          "name": "Paolo Abbritti",
+          "role": "Coordinatore - Direttore generale della DGSAP",
+          "email": "paolo.abbritti@giustizia.it",
+          "type": "coordinator"
+        },
+        {
+          "id": "anzilotti",
+          "name": "Fabio Eligio Nitto De Rossi Anzilotti",
+          "role": "Magistrato addetto al DIT, coordinatore degli affari civili",
+          "email": "fabio.anzilottinittoderossi@giustizia.it",
+          "type": "magistrate"
         }
       ]
     },
@@ -122,16 +143,16 @@
       ]
     }
   ],
-  "timestamp": "2025-07-01T16:45:26.484Z",
+  "timestamp": "2025-07-01T16:46:57.023Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
     "totalSubgroups": 4,
-    "lastUpdate": "01/07/2025, 18:45:26",
-    "updatedBy": "User-2in3nr11g"
+    "lastUpdate": "01/07/2025, 18:46:57",
+    "updatedBy": "User-tj58mo51m"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 16:44:33",
-    "timestamp": "2025-07-01T16:44:33.322Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 16:46:03",
+    "timestamp": "2025-07-01T16:46:03.367Z"
   }
 }
