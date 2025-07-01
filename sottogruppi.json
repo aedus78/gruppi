@@ -10,20 +10,34 @@
           "role": "Consigliere, Corte d'Appello di Bari",
           "email": "valeria.spagnoletti@giustizia.it",
           "type": "magistrate"
+        },
+        {
+          "id": "masi",
+          "name": "Rossella Masi",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "rossella.masi@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "buonvino",
+          "name": "Edoardo Buonvino",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "edoardo.buonvino@giustizia.it",
+          "type": "magistrate"
         }
       ]
     }
   ],
-  "timestamp": "2025-07-01T08:56:51.575Z",
+  "timestamp": "2025-07-01T08:57:29.080Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 38,
     "totalSubgroups": 1,
-    "lastUpdate": "01/07/2025, 10:56:51",
-    "updatedBy": "User-64sttm7wv"
+    "lastUpdate": "01/07/2025, 10:57:29",
+    "updatedBy": "User-84u4c2j0h"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 08:56:52",
-    "timestamp": "2025-07-01T08:56:52.268Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 08:57:29",
+    "timestamp": "2025-07-01T08:57:29.486Z"
   }
 }
