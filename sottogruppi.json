@@ -77,20 +77,34 @@
           "role": "Avvocato, componente del COA di Napoli",
           "email": "roberto.arcella@studiolegalearcella.it",
           "type": "lawyer"
+        },
+        {
+          "id": "reali",
+          "name": "Luca Reali",
+          "role": "Avvocato dello Stato, Avvocatura generale dello Stato",
+          "email": "luca.reali@avvocaturastato.it",
+          "type": "lawyer"
+        },
+        {
+          "id": "caprioli",
+          "name": "Vincenzo Caprioli",
+          "role": "Avvocato del foro di Lecce",
+          "email": "caprioli.vincenzo@ordavvle.legalmail.it",
+          "type": "lawyer"
         }
       ]
     }
   ],
-  "timestamp": "2025-07-01T09:03:52.473Z",
+  "timestamp": "2025-07-01T09:04:09.378Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 38,
     "totalSubgroups": 4,
-    "lastUpdate": "01/07/2025, 11:03:52",
-    "updatedBy": "User-ymbv9brgt"
+    "lastUpdate": "01/07/2025, 11:04:09",
+    "updatedBy": "User-8rfr7uz71"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 09:03:52",
-    "timestamp": "2025-07-01T09:03:52.841Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 09:04:09",
+    "timestamp": "2025-07-01T09:04:09.504Z"
   }
 }
