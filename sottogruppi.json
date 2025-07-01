@@ -5,13 +5,6 @@
       "name": "Nuovo PCT",
       "members": [
         {
-          "id": "spagnoletti",
-          "name": "Valeria Spagnoletti",
-          "role": "Consigliere, Corte d'Appello di Bari",
-          "email": "valeria.spagnoletti@giustizia.it",
-          "type": "magistrate"
-        },
-        {
           "id": "masi",
           "name": "Rossella Masi",
           "role": "Giudice, Tribunale di Roma",
@@ -30,13 +23,6 @@
           "name": "Chiara Cucinella",
           "role": "Giudice, Tribunale di Napoli Nord",
           "email": "chiara.cucinella@giustizia.it",
-          "type": "magistrate"
-        },
-        {
-          "id": "ciocca",
-          "name": "Enrica Ciocca",
-          "role": "Giudice, Tribunale di Roma",
-          "email": "enrica.ciocca@giustizia.it",
           "type": "magistrate"
         },
         {
@@ -86,6 +72,20 @@
           "name": "Fabio Eligio Nitto De Rossi Anzilotti",
           "role": "Magistrato addetto al DIT, coordinatore degli affari civili",
           "email": "fabio.anzilottinittoderossi@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "spagnoletti",
+          "name": "Valeria Spagnoletti",
+          "role": "Consigliere, Corte d'Appello di Bari",
+          "email": "valeria.spagnoletti@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "ciocca",
+          "name": "Enrica Ciocca",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "enrica.ciocca@giustizia.it",
           "type": "magistrate"
         }
       ]
@@ -143,16 +143,16 @@
       ]
     }
   ],
-  "timestamp": "2025-07-01T16:47:26.483Z",
+  "timestamp": "2025-07-01T16:49:26.590Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
     "totalSubgroups": 4,
-    "lastUpdate": "01/07/2025, 18:47:26",
-    "updatedBy": "User-vkkbkqt82"
+    "lastUpdate": "01/07/2025, 18:49:26",
+    "updatedBy": "User-d82dd3gy9"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 16:46:32",
-    "timestamp": "2025-07-01T16:46:32.448Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 16:48:32",
+    "timestamp": "2025-07-01T16:48:32.697Z"
   }
 }
