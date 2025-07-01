@@ -40,13 +40,6 @@
           "type": "administrative"
         },
         {
-          "id": "fedele",
-          "name": "Ileana Fedele",
-          "role": "Consigliere, Corte di Cassazione - Vice Dir. CED",
-          "email": "ileana.fedele@giustizia.it",
-          "type": "magistrate"
-        },
-        {
           "id": "prosperini",
           "name": "Alessandro Prosperini",
           "role": "Dirigente Ufficio I Giurisdizione digitale civile DGSAP",
@@ -141,18 +134,45 @@
           "type": "lawyer"
         }
       ]
+    },
+    {
+      "id": "subgroup_1751389624188",
+      "name": "Evoluzioni Cassazione",
+      "members": [
+        {
+          "id": "ferro",
+          "name": "Massimo Ferro",
+          "role": "Presidente di sezione, Corte di Cassazione",
+          "email": "massimo.ferro@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "fedele",
+          "name": "Ileana Fedele",
+          "role": "Consigliere, Corte di Cassazione - Vice Dir. CED",
+          "email": "ileana.fedele@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "scarcella",
+          "name": "Alessio Scarcella",
+          "role": "Consigliere, Corte di Cassazione - Direttore del CED",
+          "email": "alessio.scarcella@giustizia.it",
+          "type": "magistrate"
+        }
+      ]
     }
   ],
-  "timestamp": "2025-07-01T17:07:20.760Z",
+  "timestamp": "2025-07-01T17:09:13.046Z",
   "version": "1.0",
   "metadata": {
-    "totalMembers": 38,
-    "totalSubgroups": 4,
-    "lastUpdate": "01/07/2025, 19:07:20",
-    "updatedBy": "User-v0bmkummn"
+    "totalMembers": 39,
+    "totalSubgroups": 5,
+    "lastUpdate": "01/07/2025, 19:09:13",
+    "updatedBy": "User-itkdo9sw2"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 17:07:21",
-    "timestamp": "2025-07-01T17:07:21.908Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 17:08:19",
+    "timestamp": "2025-07-01T17:08:19.057Z"
   }
 }
