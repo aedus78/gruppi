@@ -5,6 +5,13 @@
       "name": "Nuovo PCT",
       "members": [
         {
+          "id": "spagnoletti",
+          "name": "Valeria Spagnoletti",
+          "role": "Consigliere, Corte d'Appello di Bari",
+          "email": "valeria.spagnoletti@giustizia.it",
+          "type": "magistrate"
+        },
+        {
           "id": "masi",
           "name": "Rossella Masi",
           "role": "Giudice, Tribunale di Roma",
@@ -59,18 +66,45 @@
           "type": "other"
         }
       ]
+    },
+    {
+      "id": "subgroup_1751360617134",
+      "name": "Portale depositi",
+      "members": [
+        {
+          "id": "arcella",
+          "name": "Roberto Arcella",
+          "role": "Avvocato, componente del COA di Napoli",
+          "email": "roberto.arcella@studiolegalearcella.it",
+          "type": "lawyer"
+        },
+        {
+          "id": "reali",
+          "name": "Luca Reali",
+          "role": "Avvocato dello Stato, Avvocatura generale dello Stato",
+          "email": "luca.reali@avvocaturastato.it",
+          "type": "lawyer"
+        },
+        {
+          "id": "caprioli",
+          "name": "Vincenzo Caprioli",
+          "role": "Avvocato del foro di Lecce",
+          "email": "caprioli.vincenzo@ordavvle.legalmail.it",
+          "type": "lawyer"
+        }
+      ]
     }
   ],
-  "timestamp": "2025-07-01T09:05:02.529Z",
+  "timestamp": "2025-07-01T09:05:52.477Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 38,
-    "totalSubgroups": 3,
-    "lastUpdate": "01/07/2025, 11:05:02",
-    "updatedBy": "User-mvsnmxugo"
+    "totalSubgroups": 4,
+    "lastUpdate": "01/07/2025, 11:05:52",
+    "updatedBy": "User-yggx7zkj6"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 09:05:02",
-    "timestamp": "2025-07-01T09:05:02.965Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 09:05:52",
+    "timestamp": "2025-07-01T09:05:52.851Z"
   }
 }
