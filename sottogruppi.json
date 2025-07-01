@@ -24,13 +24,14 @@
           "role": "Giudice, Tribunale di Roma",
           "email": "edoardo.buonvino@giustizia.it",
           "type": "magistrate"
-        }
-      ]
-    },
-    {
-      "id": "subgroup_1751360333883",
-      "name": "Miglioramento applicativi esistenti",
-      "members": [
+        },
+        {
+          "id": "cucinella",
+          "name": "Chiara Cucinella",
+          "role": "Giudice, Tribunale di Napoli Nord",
+          "email": "chiara.cucinella@giustizia.it",
+          "type": "magistrate"
+        },
         {
           "id": "ciocca",
           "name": "Enrica Ciocca",
@@ -44,8 +45,34 @@
           "role": "Consigliere, Corte d'appello di Genova",
           "email": "mariagrazia.cassia@giustizia.it",
           "type": "magistrate"
+        },
+        {
+          "id": "forte",
+          "name": "Giovanna Forte",
+          "role": "Direttore amministrativo, Scuola Superiore Magistratura, Roma",
+          "email": "giovanna.forte@giustizia.it",
+          "type": "administrative"
+        },
+        {
+          "id": "fedele",
+          "name": "Ileana Fedele",
+          "role": "Consigliere, Corte di Cassazione - Vice Dir. CED",
+          "email": "ileana.fedele@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "prosperini",
+          "name": "Alessandro Prosperini",
+          "role": "Dirigente Ufficio I Giurisdizione digitale civile DGSAP",
+          "email": "alessandro.prosperini@giustizia.it",
+          "type": "director"
         }
       ]
+    },
+    {
+      "id": "subgroup_1751360333883",
+      "name": "Miglioramento applicativi esistenti",
+      "members": []
     },
     {
       "id": "subgroup_1751360372386",
@@ -95,16 +122,16 @@
       ]
     }
   ],
-  "timestamp": "2025-07-01T16:13:26.496Z",
+  "timestamp": "2025-07-01T16:45:26.484Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
     "totalSubgroups": 4,
-    "lastUpdate": "01/07/2025, 18:13:26",
-    "updatedBy": "User-8i4fyt4o8"
+    "lastUpdate": "01/07/2025, 18:45:26",
+    "updatedBy": "User-2in3nr11g"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 16:12:33",
-    "timestamp": "2025-07-01T16:12:33.139Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 16:44:33",
+    "timestamp": "2025-07-01T16:44:33.322Z"
   }
 }
