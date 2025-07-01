@@ -107,6 +107,13 @@
           "role": "Avvocato del foro di Lecce",
           "email": "caprioli.vincenzo@ordavvle.legalmail.it",
           "type": "lawyer"
+        },
+        {
+          "id": "spagnoletti",
+          "name": "Valeria Spagnoletti",
+          "role": "Consigliere, Corte d'Appello di Bari",
+          "email": "valeria.spagnoletti@giustizia.it",
+          "type": "magistrate"
         }
       ]
     },
@@ -156,18 +163,28 @@
       "id": "subgroup_1751408135125",
       "name": "Evoluzioni appello (ordinario e lavoro)",
       "members": []
+    },
+    {
+      "id": "subgroup_1751408156609",
+      "name": "Evoluzioni Minori e famiglia",
+      "members": []
+    },
+    {
+      "id": "subgroup_1751408169433",
+      "name": "Evoluzioni Giudice di Pace",
+      "members": []
     }
   ],
-  "timestamp": "2025-07-01T22:15:47.882Z",
+  "timestamp": "2025-07-01T22:17:47.868Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
-    "totalSubgroups": 7,
-    "lastUpdate": "02/07/2025, 00:15:47",
-    "updatedBy": "User-ltlgwhu8p"
+    "totalSubgroups": 9,
+    "lastUpdate": "02/07/2025, 00:17:47",
+    "updatedBy": "User-t38ykin56"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 22:14:54",
-    "timestamp": "2025-07-01T22:14:54.669Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 22:16:53",
+    "timestamp": "2025-07-01T22:16:53.749Z"
   }
 }
