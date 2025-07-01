@@ -84,31 +84,6 @@
       ]
     },
     {
-      "id": "subgroup_1751360333883",
-      "name": "Miglioramento applicativi esistenti",
-      "members": []
-    },
-    {
-      "id": "subgroup_1751360372386",
-      "name": "Minorenni e famiglia",
-      "members": [
-        {
-          "id": "digiulio",
-          "name": "Anna Maria Di Giulio",
-          "role": "Giudice, Tribunale di Roma",
-          "email": "annamaria.digiulio@giustizia.it",
-          "type": "magistrate"
-        },
-        {
-          "id": "muscio",
-          "name": "Rosa Muscio",
-          "role": "Componente aggiuntivo",
-          "email": "rosa.muscio@giustizia.it",
-          "type": "other"
-        }
-      ]
-    },
-    {
       "id": "subgroup_1751360617134",
       "name": "Portale depositi",
       "members": [
@@ -161,18 +136,38 @@
           "type": "magistrate"
         }
       ]
+    },
+    {
+      "id": "subgroup_1751408094770",
+      "name": "Evoluzioni Lavoro (primo grado)",
+      "members": []
+    },
+    {
+      "id": "subgroup_1751408108289",
+      "name": "Evoluzioni primo grado ordinario",
+      "members": []
+    },
+    {
+      "id": "subgroup_1751408117124",
+      "name": "Evoluzioni Fallimenti + Esecuzioni",
+      "members": []
+    },
+    {
+      "id": "subgroup_1751408135125",
+      "name": "Evoluzioni appello (ordinario e lavoro)",
+      "members": []
     }
   ],
-  "timestamp": "2025-07-01T20:37:40.608Z",
+  "timestamp": "2025-07-01T22:15:47.882Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
-    "totalSubgroups": 5,
-    "lastUpdate": "01/07/2025, 22:37:40",
-    "updatedBy": "User-np4inmod3"
+    "totalSubgroups": 7,
+    "lastUpdate": "02/07/2025, 00:15:47",
+    "updatedBy": "User-ltlgwhu8p"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 20:37:42",
-    "timestamp": "2025-07-01T20:37:42.727Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 22:14:54",
+    "timestamp": "2025-07-01T22:14:54.669Z"
   }
 }
