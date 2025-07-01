@@ -314,6 +314,214 @@
                 opacity: 0;
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            max-height: 90vh;
+            width: 90%;
+            overflow: hidden;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-close {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .report-section {
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .report-members {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .report-member {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .report-member:last-child {
+            border-bottom: none;
+        }
+
+        .report-member-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .report-member-role {
+            color: #6c757d;
+            font-size: 0.9em;
+            text-align: right;
+            max-width: 50%;
+        }
+
+        .report-stats {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .report-stat {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .report-stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #1976d2;
+            display: block;
+        }
+
+        .report-stat-label {
+            color: #424242;
+            font-size: 0.9em;
+        }
+
+        .report-empty {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .modal {
+                background: none !important;
+                backdrop-filter: none !important;
+            }
+            
+            .modal-content {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: none !important;
+                max-height: none !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+            
+            .modal-header {
+                background: #2c3e50 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .modal-actions {
+                display: none !important;
+            }
+            
+            .report-title {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .report-stats {
+                background: #e3f2fd !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
     </style>
 </head>
 <body>
@@ -337,6 +545,7 @@
                     <button class="btn" onclick="createSubgroup()">+ Crea Sottogruppo</button>
                     <button class="btn" onclick="saveToGitHub()" id="saveBtn" style="background: linear-gradient(135deg, #28a745, #20c997);">💾 Salva su GitHub</button>
                     <button class="btn" onclick="loadFromGitHub()" id="loadBtn" style="background: linear-gradient(135deg, #17a2b8, #138496);">🔄 Ricarica</button>
+                    <button class="btn" onclick="showReport()" style="background: linear-gradient(135deg, #6f42c1, #5a2d91);">👁️ Visualizza Report</button>
                     <button class="btn btn-danger" onclick="resetAll()">🗑️ Reset</button>
                 </div>
                 
@@ -360,6 +569,22 @@
                         <p>Crea il tuo primo sottogruppo per iniziare ad organizzare i componenti</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Report -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 Report Sottogruppi PCT</h2>
+                <div class="modal-actions">
+                    <button class="btn" onclick="printReport()" style="background: linear-gradient(135deg, #28a745, #20c997);">🖨️ Stampa</button>
+                    <button class="btn-close" onclick="closeReport()">×</button>
+                </div>
+            </div>
+            <div class="modal-body" id="reportContent">
+                <!-- Contenuto generato dinamicamente -->
             </div>
         </div>
     </div>
@@ -1009,6 +1234,144 @@
                 }
             }
         }, 120000); // 2 minuti
+
+        // Funzioni Modal Report
+        function showReport() {
+            generateReport();
+            const modal = document.getElementById('reportModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Previene scroll della pagina
+        }
+
+        function closeReport() {
+            const modal = document.getElementById('reportModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function generateReport() {
+            const reportContent = document.getElementById('reportContent');
+            
+            if (subgroups.length === 0) {
+                reportContent.innerHTML = `
+                    <div class="report-empty">
+                        <h3>Nessun sottogruppo creato</h3>
+                        <p>Crea i tuoi primi sottogruppi per generare un report!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Calcola statistiche
+            let totalAssigned = 0;
+            subgroups.forEach(sg => totalAssigned += sg.members.length);
+            const unassigned = members.length - totalAssigned;
+
+            // Genera header con statistiche
+            let reportHTML = `
+                <div class="report-stats">
+                    <div class="report-stat">
+                        <span class="report-stat-number">${subgroups.length}</span>
+                        <span class="report-stat-label">Sottogruppi</span>
+                    </div>
+                    <div class="report-stat">
+                        <span class="report-stat-number">${totalAssigned}</span>
+                        <span class="report-stat-label">Componenti Assegnati</span>
+                    </div>
+                    <div class="report-stat">
+                        <span class="report-stat-number">${unassigned}</span>
+                        <span class="report-stat-label">Non Assegnati</span>
+                    </div>
+                </div>
+            `;
+
+            // Genera report per ogni sottogruppo
+            subgroups.forEach((subgroup, index) => {
+                reportHTML += `
+                    <div class="report-section">
+                        <div class="report-title">
+                            📋 ${subgroup.name} (${subgroup.members.length} componenti)
+                        </div>
+                `;
+
+                if (subgroup.members.length > 0) {
+                    reportHTML += `<div class="report-members">`;
+                    subgroup.members.forEach(member => {
+                        reportHTML += `
+                            <div class="report-member">
+                                <span class="report-member-name">${member.name}</span>
+                                <span class="report-member-role">${member.role}</span>
+                            </div>
+                        `;
+                    });
+                    reportHTML += `</div>`;
+                } else {
+                    reportHTML += `
+                        <div class="report-members">
+                            <div style="text-align: center; color: #6c757d; font-style: italic; padding: 20px;">
+                                Nessun componente assegnato
+                            </div>
+                        </div>
+                    `;
+                }
+
+                reportHTML += `</div>`;
+            });
+
+            // Aggiungi componenti non assegnati
+            if (unassigned > 0) {
+                const unassignedMembers = members.filter(member => 
+                    !subgroups.some(sg => sg.members.find(m => m.id === member.id))
+                );
+
+                reportHTML += `
+                    <div class="report-section">
+                        <div class="report-title">
+                            ⚠️ Componenti Non Assegnati (${unassignedMembers.length})
+                        </div>
+                        <div class="report-members">
+                `;
+
+                unassignedMembers.forEach(member => {
+                    reportHTML += `
+                        <div class="report-member">
+                            <span class="report-member-name">${member.name}</span>
+                            <span class="report-member-role">${member.role}</span>
+                        </div>
+                    `;
+                });
+
+                reportHTML += `</div></div>`;
+            }
+
+            // Aggiungi timestamp
+            reportHTML += `
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e9ecef; text-align: center; color: #6c757d; font-size: 0.9em;">
+                    <strong>Report generato il:</strong> ${new Date().toLocaleString('it-IT')}<br>
+                    <strong>Ministero della Giustizia</strong> - Dipartimento per l'innovazione tecnologica della giustizia
+                </div>
+            `;
+
+            reportContent.innerHTML = reportHTML;
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        // Chiudi modal cliccando fuori
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReport();
+            }
+        });
+
+        // Chiudi modal con Esc
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeReport();
+            }
+        });
 
         function showNotification(message, type = 'info') {
             // Crea notifica temporanea
