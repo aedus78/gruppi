@@ -1,0 +1,19 @@
+{
+  "name": "pct-sottogruppi",
+  "version": "1.0.0",
+  "description": "App collaborativa per gestire sottogruppi PCT",
+  "main": "index.html",
+  "dependencies": {
+    "@octokit/rest": "^19.0.7"
+  },
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "dev": "netlify dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TUO_USERNAME/pct-sottogruppi.git"
+  },
+  "author": "Il tuo nome",
+  "license": "MIT"
+}

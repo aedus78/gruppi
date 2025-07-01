@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gruppo di Lavoro PCT - Organizzazione Sottogruppi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            background: #495057;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .members-list {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        .member-card {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .member-card:hover {
+            border-color: #007bff;
+            box-shadow: 0 4px 12px rgba(0,123,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .member-card.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .member-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .member-role {
+            font-size: 0.85em;
+            color: #6c757d;
+            line-height: 1.3;
+        }
+
+        .role-badge {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-top: 4px;
+        }
+
+        .coordinator .role-badge {
+            background: #ffd700;
+            color: #856404;
+        }
+
+        .workspace {
+            flex: 1;
+            padding: 30px;
+            background: #fff;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 6px 20px rgba(220,53,69,0.3);
+        }
+
+        .subgroups-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .subgroup {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 200px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .subgroup.drag-over {
+            border-color: #007bff;
+            background: #e3f2fd;
+            transform: scale(1.02);
+        }
+
+        .subgroup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .subgroup-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .delete-subgroup {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .delete-subgroup:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .subgroup-members {
+            min-height: 120px;
+        }
+
+        .subgroup .member-card {
+            background: white;
+            border-color: #007bff;
+        }
+
+        .member-count {
+            background: #007bff;
+            color: white;
+            border-radius: 12px;
+            padding: 4px 8px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .subgroups-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gruppo di Lavoro per il PCT</h1>
+            <p>Ministero della Giustizia - Dipartimento per l'innovazione tecnologica</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <h2>Componenti del Gruppo</h2>
+                <div class="members-list">
+                    <input type="text" class="search-box" placeholder="Cerca componenti..." id="searchBox">
+                    <div id="membersList"></div>
+                </div>
+            </div>
+            
+            <div class="workspace">
+                <div class="controls">
+                    <button class="btn" onclick="createSubgroup()">+ Crea Sottogruppo</button>
+                    <button class="btn" onclick="saveToGitHub()" id="saveBtn" style="background: linear-gradient(135deg, #28a745, #20c997);">💾 Salva su GitHub</button>
+                    <button class="btn" onclick="loadFromGitHub()" id="loadBtn" style="background: linear-gradient(135deg, #17a2b8, #138496);">🔄 Ricarica</button>
+                    <button class="btn btn-danger" onclick="resetAll()">🗑️ Reset</button>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalMembers">0</div>
+                        <div class="stat-label">Componenti Totali</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalSubgroups">0</div>
+                        <div class="stat-label">Sottogruppi</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="unassignedMembers">0</div>
+                        <div class="stat-label">Non Assegnati</div>
+                    </div>
+                </div>
+                
+                <div class="subgroups-container" id="subgroupsContainer">
+                    <div class="empty-state">
+                        <p>Crea il tuo primo sottogruppo per iniziare ad organizzare i componenti</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dati dei componenti del gruppo
+        const members = [
+            {
+                id: 'coord_abbritti',
+                name: 'Paolo Abbritti',
+                role: 'Coordinatore - Direttore generale della DGSAP',
+                email: 'paolo.abbritti@giustizia.it',
+                type: 'coordinator'
+            },
+            {
+                id: 'anzilotti',
+                name: 'Fabio Eligio Nitto De Rossi Anzilotti',
+                role: 'Magistrato addetto al DIT, coordinatore degli affari civili',
+                email: 'fabio.anzilottinittoderossi@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'prosperini',
+                name: 'Alessandro Prosperini',
+                role: 'Dirigente Ufficio I Giurisdizione digitale civile DGSAP',
+                email: 'alessandro.prosperini@giustizia.it',
+                type: 'director'
+            },
+            {
+                id: 'spagnoletti',
+                name: 'Valeria Spagnoletti',
+                role: 'Consigliere, Corte d\'Appello di Bari',
+                email: 'valeria.spagnoletti@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'masi',
+                name: 'Rossella Masi',
+                role: 'Giudice, Tribunale di Roma',
+                email: 'rossella.masi@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'ricchezza',
+                name: 'Valentina Ricchezza',
+                role: 'Giudice, Tribunale di Santa Maria Capua Vetere',
+                email: 'valentina.ricchezza@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'cucinella',
+                name: 'Chiara Cucinella',
+                role: 'Giudice, Tribunale di Napoli Nord',
+                email: 'chiara.cucinella@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'canciello',
+                name: 'Rosario Canciello',
+                role: 'Giudice, Tribunale di Napoli Nord',
+                email: 'rosario.canciello@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'buonvino',
+                name: 'Edoardo Buonvino',
+                role: 'Giudice, Tribunale di Roma',
+                email: 'edoardo.buonvino@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'cassia',
+                name: 'Maria Grazia Cassia',
+                role: 'Consigliere, Corte d\'appello di Genova',
+                email: 'mariagrazia.cassia@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'tabasco',
+                name: 'Barbara Tabasco',
+                role: 'Cancelliere, Scuola Superiore della Magistratura, Roma',
+                email: 'barbara.tabasco@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'forte',
+                name: 'Giovanna Forte',
+                role: 'Direttore amministrativo, Scuola Superiore Magistratura, Roma',
+                email: 'giovanna.forte@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'grimaldi',
+                name: 'Ilaria Grimaldi',
+                role: 'Giudice, Tribunale di Napoli, componente della STO del CSM',
+                email: 'ilaria.grimaldi@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'ciocca',
+                name: 'Enrica Ciocca',
+                role: 'Giudice, Tribunale di Roma',
+                email: 'enrica.ciocca@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'ferro',
+                name: 'Massimo Ferro',
+                role: 'Presidente di sezione, Corte di Cassazione',
+                email: 'massimo.ferro@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'scarcella',
+                name: 'Alessio Scarcella',
+                role: 'Consigliere, Corte di Cassazione - Direttore del CED',
+                email: 'alessio.scarcella@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'fedele',
+                name: 'Ileana Fedele',
+                role: 'Consigliere, Corte di Cassazione - Vice Dir. CED',
+                email: 'ileana.fedele@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'nardecchia',
+                name: 'Giovanni Battista Nardecchia',
+                role: 'Sostituto procuratore della Procura generale della Corte di cassazione',
+                email: 'giovannibattista.nardecchia@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'villa',
+                name: 'Luca Villa',
+                role: 'Procuratore, Tribunale per i Minorenni di Milano',
+                email: 'luca.villa@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'digiulio',
+                name: 'Anna Maria Di Giulio',
+                role: 'Giudice, Tribunale di Roma',
+                email: 'annamaria.digiulio@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'reali',
+                name: 'Luca Reali',
+                role: 'Avvocato dello Stato, Avvocatura generale dello Stato',
+                email: 'luca.reali@avvocaturastato.it',
+                type: 'lawyer'
+            },
+            {
+                id: 'santinon',
+                name: 'Federica Santinon',
+                role: 'Avvocato, componente del Consiglio Nazionale Forense',
+                email: 'santinon@consiglionazionaleforense.it',
+                type: 'lawyer'
+            },
+            {
+                id: 'arcella',
+                name: 'Roberto Arcella',
+                role: 'Avvocato, componente del COA di Napoli',
+                email: 'roberto.arcella@studiolegalearcella.it',
+                type: 'lawyer'
+            },
+            {
+                id: 'rocchi',
+                name: 'Giovanni Rocchi',
+                role: 'Avvocato, Presidente del COA di Brescia',
+                email: 'giovanni.rocchi@me.com',
+                type: 'lawyer'
+            },
+            {
+                id: 'caprioli',
+                name: 'Vincenzo Caprioli',
+                role: 'Avvocato del foro di Lecce',
+                email: 'caprioli.vincenzo@ordavvle.legalmail.it',
+                type: 'lawyer'
+            },
+            {
+                id: 'spezziga',
+                name: 'Vincenzo Spezziga',
+                role: 'Avvocato del foro di Como',
+                email: 'vincenzo.spezziga@como.pecavvocati.it',
+                type: 'lawyer'
+            },
+            {
+                id: 'rivai',
+                name: 'Patrizia Rivai',
+                role: 'Funzionario giudiziario, Corte d\'appello di Firenze',
+                email: 'patrizia.rivai@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'fusco',
+                name: 'Pia Fusco',
+                role: 'Funzionario giudiziario, Tribunale di Roma',
+                email: 'pia.fusco@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'mura',
+                name: 'Sabrina Mura',
+                role: 'Funzionario giudiziario, Tribunale di Bolzano',
+                email: 'sabrina.mura@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'paoli',
+                name: 'Donata Paoli',
+                role: 'Funzionario giudiziario, Tribunale per i minorenni di Firenze',
+                email: 'donata.paoli@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'cugno',
+                name: 'Maria Luisa Cugno',
+                role: 'Funzionario statistico, DGSTAT',
+                email: 'marialuisa.cugno@giustizia.it',
+                type: 'administrative'
+            },
+            {
+                id: 'fabiani',
+                name: 'Ernesto Fabiani',
+                role: 'Prof. Ordinario diritto processuale civile',
+                email: 'erfabian@unisannio.it',
+                type: 'academic'
+            },
+            {
+                id: 'ruggiero',
+                name: 'Tiziana Ruggiero',
+                role: 'Avvocato membro commissione famiglia COA Roma',
+                email: 'info.studioruggiero@gmail.com',
+                type: 'lawyer'
+            },
+            {
+                id: 'nardone',
+                name: 'Antonella Nardone',
+                role: 'Giudice onorario, Tribunale di Torre Annunziata',
+                email: 'mariaantonella.nardone@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'jachia',
+                name: 'Giorgio Jachia',
+                role: 'Presidente di sezione, Tribunale di Roma',
+                email: 'giorgio.jachia@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'desimone',
+                name: 'Laura De Simone',
+                role: 'Presidente di sezione, Tribunale di Milano',
+                email: 'laura.desimone@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'debernardin',
+                name: 'Lucia De Bernardin',
+                role: 'Giudice, Tribunale di Roma',
+                email: 'lucia.debernardin@giustizia.it',
+                type: 'magistrate'
+            },
+            {
+                id: 'muscio',
+                name: 'Rosa Muscio',
+                role: 'Componente aggiuntivo',
+                email: 'rosa.muscio@giustizia.it',
+                type: 'other'
+            }
+        ];
+
+        let subgroups = [];
+        let draggedElement = null;
+        let subgroupCounter = 0;
+
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMembers();
+            setupSearch();
+            updateStats();
+            loadFromGitHub(); // Carica automaticamente i dati all'avvio
+        });
+
+        function renderMembers(filteredMembers = members) {
+            const membersList = document.getElementById('membersList');
+            membersList.innerHTML = '';
+
+            filteredMembers.forEach(member => {
+                const memberCard = createMemberCard(member);
+                membersList.appendChild(memberCard);
+            });
+        }
+
+        function createMemberCard(member) {
+            const card = document.createElement('div');
+            card.className = `member-card ${member.type}`;
+            card.draggable = true;
+            card.dataset.memberId = member.id;
+
+            card.innerHTML = `
+                <div class="member-name">${member.name}</div>
+                <div class="member-role">${member.role}</div>
+                <span class="role-badge">${getRoleLabel(member.type)}</span>
+            `;
+
+            // Eventi drag and drop
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+
+            return card;
+        }
+
+        function getRoleLabel(type) {
+            const labels = {
+                coordinator: 'Coordinatore',
+                magistrate: 'Magistrato',
+                lawyer: 'Avvocato',
+                administrative: 'Amministrativo',
+                academic: 'Accademico',
+                director: 'Dirigente',
+                other: 'Altro'
+            };
+            return labels[type] || 'N/A';
+        }
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', e.target.outerHTML);
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function setupSearch() {
+            const searchBox = document.getElementById('searchBox');
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredMembers = members.filter(member => 
+                    member.name.toLowerCase().includes(searchTerm) ||
+                    member.role.toLowerCase().includes(searchTerm)
+                );
+                renderMembers(filteredMembers);
+            });
+        }
+
+        function createSubgroup() {
+            subgroupCounter++;
+            const subgroupName = prompt('Nome del sottogruppo:', `Sottogruppo ${subgroupCounter}`);
+            
+            if (!subgroupName) return;
+
+            const subgroup = {
+                id: `subgroup_${Date.now()}`,
+                name: subgroupName,
+                members: []
+            };
+
+            subgroups.push(subgroup);
+            renderSubgroups();
+            updateStats();
+        }
+
+        function renderSubgroups() {
+            const container = document.getElementById('subgroupsContainer');
+            
+            if (subgroups.length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>Crea il tuo primo sottogruppo per iniziare ad organizzare i componenti</p></div>';
+                return;
+            }
+
+            container.innerHTML = '';
+
+            subgroups.forEach(subgroup => {
+                const subgroupElement = createSubgroupElement(subgroup);
+                container.appendChild(subgroupElement);
+            });
+        }
+
+        function createSubgroupElement(subgroup) {
+            const element = document.createElement('div');
+            element.className = 'subgroup';
+            element.dataset.subgroupId = subgroup.id;
+
+            element.innerHTML = `
+                <div class="subgroup-header">
+                    <span class="subgroup-title">${subgroup.name}</span>
+                    <div>
+                        <span class="member-count">${subgroup.members.length}</span>
+                        <button class="delete-subgroup" onclick="deleteSubgroup('${subgroup.id}')">×</button>
+                    </div>
+                </div>
+                <div class="subgroup-members"></div>
+            `;
+
+            // Aggiungi i membri esistenti
+            const membersContainer = element.querySelector('.subgroup-members');
+            subgroup.members.forEach(member => {
+                const memberCard = createMemberCard(member);
+                membersContainer.appendChild(memberCard);
+            });
+
+            // Eventi drag and drop per il sottogruppo
+            element.addEventListener('dragover', handleDragOver);
+            element.addEventListener('drop', handleDrop);
+            element.addEventListener('dragleave', handleDragLeave);
+
+            return element;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+                e.currentTarget.classList.remove('drag-over');
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+
+            if (!draggedElement) return;
+
+            const subgroupId = e.currentTarget.dataset.subgroupId;
+            const memberId = draggedElement.dataset.memberId;
+            
+            // Trova il membro
+            const member = members.find(m => m.id === memberId);
+            if (!member) return;
+
+            // Rimuovi il membro da altri sottogruppi
+            subgroups.forEach(sg => {
+                sg.members = sg.members.filter(m => m.id !== memberId);
+            });
+
+            // Aggiungi il membro al nuovo sottogruppo
+            const targetSubgroup = subgroups.find(sg => sg.id === subgroupId);
+            if (targetSubgroup && !targetSubgroup.members.find(m => m.id === memberId)) {
+                targetSubgroup.members.push(member);
+            }
+
+            // Rimuovi l'elemento originale se viene da un sottogruppo
+            const originalParent = draggedElement.closest('.subgroup-members');
+            if (originalParent) {
+                draggedElement.remove();
+            }
+
+            // Aggiorna la visualizzazione
+            renderSubgroups();
+            updateStats();
+        }
+
+        function deleteSubgroup(subgroupId) {
+            if (confirm('Sei sicuro di voler eliminare questo sottogruppo? I membri torneranno alla lista principale.')) {
+                subgroups = subgroups.filter(sg => sg.id !== subgroupId);
+                renderSubgroups();
+                updateStats();
+            }
+        }
+
+        function resetAll() {
+            if (confirm('Sei sicuro di voler eliminare tutti i sottogruppi e ricominciare?')) {
+                subgroups = [];
+                subgroupCounter = 0;
+                renderSubgroups();
+                renderMembers();
+                updateStats();
+            }
+        }
+
+        function updateStats() {
+            const totalMembers = members.length;
+            const totalSubgroupsCount = subgroups.length;
+            
+            let assignedMembers = 0;
+            subgroups.forEach(sg => {
+                assignedMembers += sg.members.length;
+            });
+            
+            const unassignedMembers = totalMembers - assignedMembers;
+
+            document.getElementById('totalMembers').textContent = totalMembers;
+            document.getElementById('totalSubgroups').textContent = totalSubgroupsCount;
+            document.getElementById('unassignedMembers').textContent = unassignedMembers;
+        }
+
+        // Aggiungi drag and drop anche per la sidebar (per rimuovere membri dai sottogruppi)
+        document.querySelector('.members-list').addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+
+        document.querySelector('.members-list').addEventListener('drop', function(e) {
+            e.preventDefault();
+            
+            if (!draggedElement) return;
+
+            const memberId = draggedElement.dataset.memberId;
+            
+            // Rimuovi il membro da tutti i sottogruppi
+            subgroups.forEach(sg => {
+                sg.members = sg.members.filter(m => m.id !== memberId);
+            });
+
+            // Rimuovi l'elemento dal sottogruppo
+            const originalParent = draggedElement.closest('.subgroup-members');
+            if (originalParent) {
+                draggedElement.remove();
+            }
+
+            renderSubgroups();
+            updateStats();
+        });
+
+        // Funzioni per salvare/caricare i dati da GitHub
+        async function saveToGitHub() {
+            const saveBtn = document.getElementById('saveBtn');
+            const originalText = saveBtn.innerHTML;
+            
+            try {
+                saveBtn.innerHTML = '⏳ Salvataggio...';
+                saveBtn.disabled = true;
+
+                const dataToSave = {
+                    subgroups: subgroups,
+                    timestamp: new Date().toISOString(),
+                    version: "1.0",
+                    metadata: {
+                        totalMembers: members.length,
+                        totalSubgroups: subgroups.length,
+                        lastUpdate: new Date().toLocaleString('it-IT'),
+                        updatedBy: 'User-' + Math.random().toString(36).substr(2, 9) // ID temporaneo
+                    }
+                };
+
+                const response = await fetch('/.netlify/functions/save-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dataToSave)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Errore HTTP: ${response.status}`);
+                }
+
+                const result = await response.json();
+                showNotification('✅ Sottogruppi salvati su GitHub!', 'success');
+                
+            } catch (error) {
+                console.error('Errore nel salvataggio:', error);
+                showNotification('❌ Errore nel salvataggio: ' + error.message, 'error');
+            } finally {
+                saveBtn.innerHTML = originalText;
+                saveBtn.disabled = false;
+            }
+        }
+
+        async function loadFromGitHub() {
+            const loadBtn = document.getElementById('loadBtn');
+            const originalText = loadBtn.innerHTML;
+            
+            try {
+                loadBtn.innerHTML = '⏳ Caricamento...';
+                loadBtn.disabled = true;
+
+                const response = await fetch('/.netlify/functions/get-data');
+                
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        // File non esiste ancora, è normale per la prima volta
+                        showNotification('ℹ️ Nessun dato salvato trovato. Inizia creando sottogruppi!', 'info');
+                        return;
+                    }
+                    throw new Error(`Errore HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (data && data.subgroups && Array.isArray(data.subgroups)) {
+                    // Se ci sono già sottogruppi locali, chiedi conferma
+                    if (subgroups.length > 0) {
+                        const confirmMessage = `
+                            Trovati ${data.subgroups.length} sottogruppi salvati.
+                            Ultimo aggiornamento: ${data.metadata?.lastUpdate || 'N/A'}
+                            
+                            ⚠️ Questo sovrascriverà i sottogruppi attuali!
+                        `;
+                        
+                        if (!confirm(confirmMessage)) {
+                            return;
+                        }
+                    }
+
+                    subgroups = data.subgroups;
+                    subgroupCounter = Math.max(...subgroups.map(sg => {
+                        const match = sg.name.match(/Sottogruppo (\d+)/);
+                        return match ? parseInt(match[1]) : 0;
+                    }), 0);
+                    
+                    renderSubgroups();
+                    updateStats();
+                    
+                    if (data.metadata?.lastUpdate) {
+                        showNotification(`✅ Dati caricati! Ultimo aggiornamento: ${data.metadata.lastUpdate}`, 'success');
+                    } else {
+                        showNotification('✅ Sottogruppi caricati da GitHub!', 'success');
+                    }
+                } else {
+                    showNotification('ℹ️ Nessun sottogruppo trovato nel file salvato.', 'info');
+                }
+                
+            } catch (error) {
+                console.error('Errore nel caricamento:', error);
+                showNotification('❌ Errore nel caricamento: ' + error.message, 'error');
+            } finally {
+                loadBtn.innerHTML = originalText;
+                loadBtn.disabled = false;
+            }
+        }
+
+        // Salvataggio automatico ogni 2 minuti se ci sono modifiche
+        let lastSaveHash = '';
+        setInterval(async () => {
+            if (subgroups.length > 0) {
+                const currentHash = JSON.stringify(subgroups);
+                if (currentHash !== lastSaveHash) {
+                    try {
+                        await saveToGitHub();
+                        lastSaveHash = currentHash;
+                        showNotification('💾 Salvataggio automatico completato', 'info');
+                    } catch (error) {
+                        console.log('Salvataggio automatico fallito:', error);
+                    }
+                }
+            }
+        }, 120000); // 2 minuti
+
+        function showNotification(message, type = 'info') {
+            // Crea notifica temporanea
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#007bff'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 1000;
+                font-weight: 500;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Rimuovi dopo 4 secondi
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
