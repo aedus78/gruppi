@@ -88,31 +88,17 @@
       "name": "Portale depositi",
       "members": [
         {
-          "id": "arcella",
-          "name": "Roberto Arcella",
-          "role": "Avvocato, componente del COA di Napoli",
-          "email": "roberto.arcella@studiolegalearcella.it",
-          "type": "lawyer"
-        },
-        {
-          "id": "reali",
-          "name": "Luca Reali",
-          "role": "Avvocato dello Stato, Avvocatura generale dello Stato",
-          "email": "luca.reali@avvocaturastato.it",
-          "type": "lawyer"
-        },
-        {
-          "id": "caprioli",
-          "name": "Vincenzo Caprioli",
-          "role": "Avvocato del foro di Lecce",
-          "email": "caprioli.vincenzo@ordavvle.legalmail.it",
-          "type": "lawyer"
-        },
-        {
           "id": "spagnoletti",
           "name": "Valeria Spagnoletti",
           "role": "Consigliere, Corte d'Appello di Bari",
           "email": "valeria.spagnoletti@giustizia.it",
+          "type": "magistrate"
+        },
+        {
+          "id": "buonvino",
+          "name": "Edoardo Buonvino",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "edoardo.buonvino@giustizia.it",
           "type": "magistrate"
         }
       ]
@@ -191,16 +177,16 @@
       "members": []
     }
   ],
-  "timestamp": "2025-07-01T22:29:48.219Z",
+  "timestamp": "2025-07-01T22:29:54.398Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
     "totalSubgroups": 9,
-    "lastUpdate": "02/07/2025, 00:29:48",
-    "updatedBy": "User-92xahscem"
+    "lastUpdate": "02/07/2025, 00:29:54",
+    "updatedBy": "User-ny3ms8bzz"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 22:28:54",
-    "timestamp": "2025-07-01T22:28:54.070Z"
+    "message": "Aggiornamento sottogruppi - 01/07/2025, 22:28:59",
+    "timestamp": "2025-07-01T22:28:59.909Z"
   }
 }
