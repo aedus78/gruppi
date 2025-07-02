@@ -197,18 +197,23 @@
       "id": "subgroup_1751408169433",
       "name": "Evoluzioni Giudice di Pace",
       "members": []
+    },
+    {
+      "id": "subgroup_1751454235326",
+      "name": "Accesso al fascicolo, alla giurisprudenza e notificazioni telematiche",
+      "members": []
     }
   ],
-  "timestamp": "2025-07-02T06:17:16.817Z",
+  "timestamp": "2025-07-02T11:05:16.134Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
-    "totalSubgroups": 9,
-    "lastUpdate": "02/07/2025, 08:17:16",
-    "updatedBy": "User-xvgv4xycc"
+    "totalSubgroups": 10,
+    "lastUpdate": "02/07/2025, 13:05:16",
+    "updatedBy": "User-qzu7e99vs"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 02/07/2025, 06:17:16",
-    "timestamp": "2025-07-02T06:17:16.944Z"
+    "message": "Aggiornamento sottogruppi - 02/07/2025, 11:04:22",
+    "timestamp": "2025-07-02T11:04:22.206Z"
   }
 }
