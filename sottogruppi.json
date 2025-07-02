@@ -140,6 +140,13 @@
           "role": "Giudice, Tribunale di Roma",
           "email": "rossella.masi@giustizia.it",
           "type": "magistrate"
+        },
+        {
+          "id": "ciocca",
+          "name": "Enrica Ciocca",
+          "role": "Giudice, Tribunale di Roma",
+          "email": "enrica.ciocca@giustizia.it",
+          "type": "magistrate"
         }
       ]
     },
@@ -192,16 +199,16 @@
       "members": []
     }
   ],
-  "timestamp": "2025-07-02T05:41:46.114Z",
+  "timestamp": "2025-07-02T06:17:12.422Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
     "totalSubgroups": 9,
-    "lastUpdate": "02/07/2025, 07:41:46",
-    "updatedBy": "User-seavwppv9"
+    "lastUpdate": "02/07/2025, 08:17:12",
+    "updatedBy": "User-1j2fwcv3f"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 02/07/2025, 05:41:47",
-    "timestamp": "2025-07-02T05:41:47.289Z"
+    "message": "Aggiornamento sottogruppi - 02/07/2025, 06:17:13",
+    "timestamp": "2025-07-02T06:17:13.754Z"
   }
 }
