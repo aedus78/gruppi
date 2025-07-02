@@ -163,6 +163,13 @@
           "role": "Consigliere, Corte d'Appello di Bari",
           "email": "valeria.spagnoletti@giustizia.it",
           "type": "magistrate"
+        },
+        {
+          "id": "cassia",
+          "name": "Maria Grazia Cassia",
+          "role": "Consigliere, Corte d'appello di Genova",
+          "email": "mariagrazia.cassia@giustizia.it",
+          "type": "magistrate"
         }
       ]
     },
@@ -177,16 +184,16 @@
       "members": []
     }
   ],
-  "timestamp": "2025-07-01T22:30:25.005Z",
+  "timestamp": "2025-07-02T05:20:32.793Z",
   "version": "1.0",
   "metadata": {
     "totalMembers": 39,
     "totalSubgroups": 9,
-    "lastUpdate": "02/07/2025, 00:30:25",
-    "updatedBy": "User-5ltclwrt7"
+    "lastUpdate": "02/07/2025, 07:20:32",
+    "updatedBy": "User-d7hgebv4p"
   },
   "commitInfo": {
-    "message": "Aggiornamento sottogruppi - 01/07/2025, 22:29:30",
-    "timestamp": "2025-07-01T22:29:30.768Z"
+    "message": "Aggiornamento sottogruppi - 02/07/2025, 05:20:33",
+    "timestamp": "2025-07-02T05:20:33.771Z"
   }
 }
